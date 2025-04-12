@@ -16,6 +16,7 @@ Based on [Xorm Drivers Support](https://gitea.com/xorm/xorm#drivers-support), Th
 - SQLite: [github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3)
 - MsSql: [github.com/denisenkom/go-mssqldb](https://github.com/denisenkom/go-mssqldb)
 - Oracle: [github.com/mattn/go-oci8](https://github.com/mattn/go-oci8) (experiment)
+- Dameng: [gitee.com/chunanyong/dm](https://gitee.com/chunanyong/dm) (experiment)
 
 ## Installation
 
