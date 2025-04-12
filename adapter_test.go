@@ -19,6 +19,7 @@ import (
 	"strings"
 	"testing"
 
+	_ "gitee.com/chunanyong/dm" // db = dm
 	"github.com/casbin/casbin/v2"
 	"github.com/casbin/casbin/v2/util"
 	_ "github.com/go-sql-driver/mysql"
@@ -377,6 +378,15 @@ func TestAdapters(t *testing.T) {
 	testUpdateFilteredPolicies(t, a)
 
 	a, _ = NewAdapterWithTableName("mysql", "root:@tcp(127.0.0.1:3306)/", "test", "abc")
+	testSaveLoad(t, a)
+	testAutoSave(t, a)
+	testFilteredPolicy(t, a)
+	testAddPolicies(t, a)
+	testRemovePolicies(t, a)
+	testUpdatePolicies(t, a)
+	testUpdateFilteredPolicies(t, a)
+
+	a, _ = NewAdapter("dm", "dm://SYSDBA:SYSDBA001@127.0.0.1:5236/")
 	testSaveLoad(t, a)
 	testAutoSave(t, a)
 	testFilteredPolicy(t, a)

@@ -23,7 +23,7 @@ import (
 	"github.com/casbin/casbin/v2/model"
 	"github.com/casbin/casbin/v2/persist"
 	"github.com/lib/pq"
-	"github.com/xorm-io/xorm"
+	"xorm.io/xorm"
 )
 
 // TableName  if tableName=="" , adapter will use default tablename "casbin_rule".
@@ -198,6 +198,9 @@ func (a *Adapter) createDatabase() error {
 				return nil
 			}
 		}
+	} else if a.driverName == "dm" {
+		// Dameng can only write to the default schema
+		return nil
 	} else if a.driverName != "sqlite3" {
 		_, err = engine.Exec("CREATE DATABASE IF NOT EXISTS casbin")
 	}
