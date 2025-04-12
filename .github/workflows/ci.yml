@@ -26,6 +26,23 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
+      dameng:
+        image: laotie255/dameng_single:dm8_20241022_rev244896_x86_rh6_64
+        env:
+          SYSDBA_PWD: SYSDBA001
+          PAGE_SIZE: 8
+          EXTENT_SIZE: 16
+          LOG_SIZE: 256
+          BLANK_PAD_MODE: 0
+          CASE_SENSITIVE: 0
+          UNICODE_FLAG: 1
+          LENGTH_IN_CHAR: 0
+          BUFFER: 1000
+          LANG: en_US.UTF-8
+          MODE: dmsingle
+          INSTANCE_NAME: dm8_test
+        ports:
+          - 5236:5236
 
     steps:
       - name: Set up Go
